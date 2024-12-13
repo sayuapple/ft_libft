@@ -51,3 +51,6 @@ t_complex	ft_cdiv(t_complex a, t_complex b)
 	ret.imag /= pow2_abs_b;
 	return (ret);
 }
+//powの置き換えで計算速度向上: pow2_abs_b = b.real * b.real + b.imag * b.img;
+//変数名変更　pow2_abs_sからdenominator
+//分母が0の時のエラー処理
