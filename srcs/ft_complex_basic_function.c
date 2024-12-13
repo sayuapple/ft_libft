@@ -18,6 +18,8 @@ double	ft_cabs(t_complex c)
 {
 	return (sqrt(pow(c.real, 2) + pow(c.imag, 2)));
 }
+//複素平面上での複素数の原点からの距離
+//powではなく直接乗算する
 
 t_complex	ft_conj(t_complex c)
 {
@@ -29,3 +31,5 @@ double	ft_carg(t_complex c)
 {
 	return (atan2(c.imag, c.real));
 }
+//複素数の偏角(複素数が実数軸に対してどれだけ傾いているか)を計算
+//結果はラジアン単位(-πからπ)
