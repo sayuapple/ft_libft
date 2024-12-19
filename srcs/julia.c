@@ -36,3 +36,4 @@ unsigned int	plot_julia(t_plot_var *var, void *__args)
 		ret = rgba2hex(0, 0, 0, 0xFF);
 	return (ret);
 }
+//なんで__argsを経由するのか
