@@ -23,6 +23,9 @@ int	rgba2hex(int r, int g, int b, int a)
 	color |= (b & 0xFF) << (8 * 0);
 	return (color);
 }
+// RGBA（赤、緑、青、アルファ(不透明度))の色成分を16進数の整数値に変換
+//関数名の変更 argb2hex
+
 
 int	hsvt2hex(double h, double s, double v, double t)
 {
@@ -52,6 +55,8 @@ int	hsvt2hex(double h, double s, double v, double t)
 	return (ret);
 }
 
+// HSVカラーモデルと**透明度（Alpha）**を使用して、16進数のカラーコードに変換
+
 int	colormap(double n)
 {
 	double	t[2];
@@ -61,7 +66,11 @@ int	colormap(double n)
 	if (1. < t[1])
 	{
 		t[0] = 1. - t[1];
+		// if (t[0] < 0.0)
+		// 	t[0] = 0.0;
 		t[1] = 1.;
 	}
 	return (hsvt2hex(5. / 6. - n, t[0], t[1], 0.));
 }
+//負の処理をするとマンデルブロの周りが白くなる
+// 5. / 6. - nが負になるか、あとその処理について
