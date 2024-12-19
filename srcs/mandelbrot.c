@@ -37,3 +37,4 @@ unsigned int	plot_mandelbrot(t_plot_var *var, void *__args)
 		ret = rgba2hex(0, 0, 0, 0xFF);
 	return (ret);
 }
+//nは最小値0.1-0.2,最大値1
