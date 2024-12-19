@@ -38,6 +38,7 @@ t_renderer	*new_renderer(char *title, t_size size)
 	free(ret);
 	return (NULL);
 }
+//失敗した場合の処理が適切であるか↑
 
 void	del_renderer(t_renderer *renderer)
 {
