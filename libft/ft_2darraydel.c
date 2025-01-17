@@ -6,20 +6,18 @@
 /*   By: tkitago <tkitago@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:26:21 by tkitago           #+#    #+#             */
-/*   Updated: 2024/12/12 21:23:17 by tkitago          ###   ########.fr       */
+/*   Updated: 2025/01/16 12:25:30 by tkitago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_2darraydel(void *array)
 {
 	char	**ptr;
 
-	ptr = array;//char **にキャストしてptrを二次元配列の各行を指すポインタとして扱う
+	ptr = array;
 	while (*ptr)
-		free(*ptr++);//現在指してる行のメモリを解放しつつ次の行へ進める
-	free(array);//二次元配列自体のメモリも解放
+		free(*ptr++);
+	free(array);
 }
-
-//ptr(2次元配列の最初の行（列）のポインタを指すポインタ)

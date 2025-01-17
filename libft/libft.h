@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkitago <tkitago@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 19:18:13 by tkitago           #+#    #+#             */
-/*   Updated: 2024/12/12 18:26:55 by tkitago          ###   ########.fr       */
+/*   Created: 2025/01/16 13:11:02 by tkitago           #+#    #+#             */
+/*   Updated: 2025/01/16 18:09:19 by tkitago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,34 @@
 # define LIBFT_H
 
 # include <limits.h>
+# include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define PATH_SEPARATE '/'
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+# define STRGEN_BUFFSIZE 20
+
+typedef struct s_strgen
+{
+	char *str;                  //メインの文字列を保持するポインタ
+	char buff[STRGEN_BUFFSIZE]; //一時的なデータを蓄積するバッファ
+	size_t position;            //バッファ内の現在の書き込み位置
+	int error;                  //エラーフラグ
+}					t_strgen;
+
+typedef struct s_bufferio
+{
+	int				fd;
+	t_strgen		*strgen;
+}					t_bufferio;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
@@ -65,5 +84,28 @@ void				*ft_2darraynew(size_t size, size_t width, size_t height);
 double				ft_atof(const char *str);
 int					ft_isspace(int c);
 void				ft_2darraydel(void *array);
-
+int					ft_bufferioread(t_bufferio *io);
+t_bufferio			*ft_bufferionew(int fd, int close_on_error);
+void				ft_bufferiodel(t_bufferio *io, int do_close);
+void				ft_strgendel(t_strgen *strgen);
+void				ft_strgenflush(t_strgen *strgen);
+t_strgen			*ft_strgennew(void);
+char				*ft_strgenfetch(t_strgen *strgen, size_t len);
+void				ft_strgenchr(t_strgen *strgen, char insert);
+void				ft_strgenstr(t_strgen *strgen, char *insert);
+char				*ft_strgencomp(t_strgen *strgen);
+char				*ft_strjoin2(char const *s1, char const *s2);
+size_t				ft_xlstlen(void *lst, size_t size);
+int					ft_xlstpop(void *lst_ptr, size_t size, int index,
+						void *dst);
+void				*ft_xlst2array(void *lst, size_t size, size_t *__len);
+void				ft_xlstclear(void *lst_ptr, size_t size);
+int					ft_xlstappend(void *lst_ptr, size_t size, void *new);
+char				*ft_readline(t_bufferio *io);
+char				*ft_joinpath(char *base, char *path);
+t_list				*ft_lstlast(t_list *lst);
+void				ft_lstdelone(t_list *lst, void (*del)(void *));
+void				ft_lstclear(t_list **lst, void (*del)(void *));
+void				ft_lstadd_back(t_list **lst, t_list *new);
+t_list				*ft_lstnew(void *content);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tkitago <tkitago@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:21:48 by tkitago           #+#    #+#             */
-/*   Updated: 2024/12/12 18:23:06 by tkitago          ###   ########.fr       */
+/*   Updated: 2024/12/29 14:47:20 by tkitago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static size_t	decimal_portion(const char *str, double *result)
 		while (ft_isdigit(str[i]))
 		{
 			fraction /= 10.;
-			(*result) += (str[i++] - '0') * fraction;
+			(*result) += (str[i] - '0') * fraction;
+			i++;
 		}
 	}
 	return (i);
@@ -91,8 +92,16 @@ static int	str_is_nan(const char *str)
 
 	ret = 1;
 	i = 0;
-	while (ret && i++ < 3)
-		ret &= ft_tolower(str[0]) == "nan"[0];
+	while (ret && i < 3)
+	{
+		if (str[i] == '\0')
+		{
+			ret = 0;
+			break ;
+		}
+		ret = ret & (ft_tolower(str[i]) == "nan"[i]);
+		i++;
+	}
 	return (ret);
 }
 
@@ -103,7 +112,15 @@ static int	str_is_inf(const char *str)
 
 	ret = 1;
 	i = 0;
-	while (ret && i++ < 3)
-		ret &= ft_tolower(str[0]) == "inf"[0];
+	while (ret && i < 3)
+	{
+		if (str[i] == '\0')
+		{
+			ret = 0;
+			break ;
+		}
+		ret = ret & (ft_tolower(str[i]) == "inf"[i]);
+		i++;
+	}
 	return (ret);
 }

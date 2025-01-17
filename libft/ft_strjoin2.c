@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strjoin2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkitago <tkitago@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 18:35:52 by tkitago           #+#    #+#             */
-/*   Updated: 2024/12/29 14:45:53 by tkitago          ###   ########.fr       */
+/*   Created: 2025/01/16 12:57:34 by tkitago           #+#    #+#             */
+/*   Updated: 2025/01/16 12:57:35 by tkitago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+char	*ft_strjoin2(char const *s1, char const *s2)
 {
-	new->next = *lst;
-	*lst = new;
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
+	return (ft_strjoin(s1, s2));
 }
