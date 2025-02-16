@@ -6,7 +6,7 @@
 /*   By: tkitago <tkitago@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 10:26:48 by tkitago           #+#    #+#             */
-/*   Updated: 2024/11/20 18:28:30 by tkitago          ###   ########.fr       */
+/*   Updated: 2024/12/22 15:35:04 by tkitago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,6 @@ char	*ft_read_file(int fd, char *accum_buf)
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	if (accum_buf[0] == '\0')
-	{
-		free(accum_buf);
-		return (NULL);
-	}
 	return (accum_buf);
 }
 
@@ -107,20 +102,20 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// #include "stdio.h"
-// #include <fcntl.h>
+#include "stdio.h"
+#include <fcntl.h>
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
+int	main(void)
+{
+	int fd;
+	char *line;
 
-// 	fd = open("get_next_line.c", O_RDONLY);
-// 	line = (char*)1;
-// 	while (line)
-// 	{
-// 		line = get_next_line(fd);
-// 		printf("%s", line);
-// 		free(line);
-// 	}
-// }
+	fd = open("get_next_line.c", O_RDONLY);
+	line = (char *)1;
+	while (line)
+	{
+		line = get_next_line(0);
+		printf("%s", line);
+		free(line);
+	}
+}

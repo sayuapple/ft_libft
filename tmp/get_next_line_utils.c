@@ -6,7 +6,7 @@
 /*   By: tkitago <tkitago@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:38:20 by tkitago           #+#    #+#             */
-/*   Updated: 2024/11/20 12:04:56 by tkitago          ###   ########.fr       */
+/*   Updated: 2024/11/14 12:37:04 by tkitago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	char	*tmp;
 
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (NULL);
 	tmp = str;
